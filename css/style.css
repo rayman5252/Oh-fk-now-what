@@ -143,6 +143,26 @@ h3 { margin: 0; }
   margin-bottom: 22px;
 }
 .hero h1 .censor { color: var(--gold); }
+
+.hero-logo-heading { margin: 0 0 28px; }
+.hero-logo-img {
+  width: clamp(220px, 26vw, 340px);
+  border-radius: 12px;
+  box-shadow: 0 20px 44px rgba(0,0,0,0.5);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .hero-sub {
   font-family: var(--font-body);
   font-size: 1.15rem;
