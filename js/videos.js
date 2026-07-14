@@ -18,7 +18,7 @@ const VIDEOS = [
   // Example — delete or edit once you have a real episode:
   // {
   //   title: "Episode 1: Oh F*ck, Now What?",
-  //   url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  //   description: "The one where it all started."
+  //   url: "https://youtu.be/qQOwH4bnCno?si=70S_fVfp2zrAuf73",
+  //   description: "KARA SAVES MEXICO."
   // },
 ];
