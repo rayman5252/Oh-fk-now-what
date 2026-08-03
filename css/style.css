@@ -515,3 +515,10 @@ h3 { margin: 0; }
 @media (max-width: 640px) {
    .stats-inner { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
 }
+
+
+/* Hero photo -- recenter on Kara within the frame */
+.hero-frame img {
+   transform: scale(1.1);
+   transform-origin: 50% 28%;
+}
