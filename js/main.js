@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initYear();
     renderVideos();
     initLightbox();
+    initReveal();
+    initCounters();
 });
 
 /* Mobile nav toggle -------------------------------------------------------- */
@@ -112,4 +114,73 @@ function initLightbox() {
     closeBtn?.addEventListener('click', close);
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+}
+
+
+/* Scroll-reveal for key sections as they enter the viewport ----------------*/
+function initReveal() {
+    const targets = document.querySelectorAll('.about-media, .about-copy, .podcast-copy, .podcast-media, #videoGrid, .gallery-grid, .follow-inner, .reveal-stagger');
+    if (!targets.length) return;
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || prefersReduced) {
+        targets.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+targets.forEach(el => observer.observe(el));
+}
+
+/* Animated count-up numbers in the stats strip ------------------------------*/
+function initCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    if (!counters.length) return;
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const setFinal = (el) => {
+    const target = el.getAttribute('data-count');
+    const suffix = el.getAttribute('data-suffix') || '';
+    el.textContent = target + suffix;
+};
+
+if (!('IntersectionObserver' in window) || prefersReduced) {
+    counters.forEach(setFinal);
+    return;
+}
+
+const animate = (el) => {
+    const target = parseFloat(el.getAttribute('data-count'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1400;
+    const start = performance.now();
+
+    const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animate(entry.target);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+counters.forEach(el => observer.observe(el));
 }

@@ -395,3 +395,123 @@ h3 { margin: 0; }
   .video-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* ==========================================================================
+   Motion -- scroll reveals, hero glow, hover polish
+   Respects prefers-reduced-motion throughout.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+   .about-media, .about-copy,
+   .podcast-copy, .podcast-media,
+   #videoGrid, .gallery-grid, .follow-inner {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+   }
+   .about-media.is-visible, .about-copy.is-visible,
+   .podcast-copy.is-visible, .podcast-media.is-visible,
+   #videoGrid.is-visible, .gallery-grid.is-visible, .follow-inner.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+   }
+
+.reveal-stagger > * {
+   opacity: 0;
+   transform: translateY(22px);
+}
+   .reveal-stagger.is-visible > * {
+      animation: revealStagger 0.6s ease forwards;
+   }
+   .reveal-stagger.is-visible > *:nth-child(1) { animation-delay: 0.05s; }
+   .reveal-stagger.is-visible > *:nth-child(2) { animation-delay: 0.15s; }
+   .reveal-stagger.is-visible > *:nth-child(3) { animation-delay: 0.25s; }
+   .reveal-stagger.is-visible > *:nth-child(4) { animation-delay: 0.35s; }
+   .reveal-stagger.is-visible > *:nth-child(5) { animation-delay: 0.45s; }
+
+.hero {
+   background-size: 140% 140%;
+   animation: heroGlow 14s ease-in-out infinite;
+}
+   .hero-badge { animation: badgeFloat 3.6s ease-in-out infinite; }
+}
+
+@keyframes revealStagger {
+   from { opacity: 0; transform: translateY(22px); }
+   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroGlow {
+   0%, 100% { background-position: 0% 0%; }
+   50% { background-position: 100% 40%; }
+}
+@keyframes badgeFloat {
+   0%, 100% { transform: translateX(-50%) translateY(0); }
+   50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* Nav link underline sweep */
+.main-nav a:not(.nav-cta) { position: relative; }
+.main-nav a:not(.nav-cta)::after {
+   content: "";
+   position: absolute;
+   left: 0;
+   bottom: -6px;
+   width: 100%;
+   height: 2px;
+   background: var(--gold);
+   transform: scaleX(0);
+   transform-origin: left;
+   transition: transform 0.25s ease;
+}
+.main-nav a:not(.nav-cta):hover::after { transform: scaleX(1); }
+
+/* Button shine sweep */
+.btn { position: relative; overflow: hidden; }
+.btn::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: -60%;
+   width: 40%;
+   height: 100%;
+   background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+   transform: skewX(-20deg);
+   transition: left 0.6s ease;
+}
+.btn:hover::before { left: 130%; }
+
+/* Card lift polish */
+.podcast-card, .video-card {
+   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.podcast-card:hover { transform: translateY(-6px); border-color: var(--gold); }
+.video-card:hover { transform: translateY(-6px); box-shadow: 0 20px 36px rgba(11,11,12,0.18); }
+
+/* Stats strip -------------------------------------------------------------*/
+.stats { background: var(--gold); padding: 30px 0; }
+.stats-inner {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 24px;
+   text-align: center;
+}
+.stat-num {
+   font-family: var(--font-display);
+   font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+   color: var(--black);
+   display: block;
+}
+.stat-label {
+   display: block;
+   font-weight: 700;
+   font-size: 0.78rem;
+   letter-spacing: 0.05em;
+   text-transform: uppercase;
+   color: rgba(11,11,12,0.7);
+   margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+   .stats-inner { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
+}
