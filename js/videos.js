@@ -22,6 +22,16 @@ const VIDEOS = [
     url: "https://youtu.be/TAFv2dpKN88?si=mM7fDKKlY62c0fZK",          
       description: "",
    },
+   {
+      title: "New Episode",
+      url: "https://youtu.be/8dj7DKHd-C4?si=TERhh833hyOHHBlJ",
+      description: "",
+   },
+   {
+      title: "New Episode",
+      url: "https://youtu.be/ey2lmssG6Lk?si=eg0VqSx_E5BVmN3y",
+      description: "",
+   },
      // Example — delete or edit once you have a real episode:
      // {
      //   title: "Episode 1: Oh F*ck, Now What?",
