@@ -18,17 +18,17 @@
 
 const VIDEOS = [
    {
-          title: "New Episode",
+          title: "Coming soon",
     url: "https://youtu.be/TAFv2dpKN88?si=mM7fDKKlY62c0fZK",          
       description: "",
    },
    {
-      title: "New Episode",
+      title: "Episode 1 teaser",
       url: "https://youtu.be/8dj7DKHd-C4?si=TERhh833hyOHHBlJ",
       description: "",
    },
    {
-      title: "New Episode",
+      title: "Episode 2 teaser",
       url: "https://youtu.be/ey2lmssG6Lk?si=eg0VqSx_E5BVmN3y",
       description: "",
    },
