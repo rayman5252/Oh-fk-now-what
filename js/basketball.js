@@ -30,7 +30,7 @@ function initBballGame() {
   const HAND_RIGHT = 36;
   const BALL_TARGET_X = 134;
   const BALL_HALF_WIDTH = 15;
-  const RISE_DISTANCE = 122;
+  const RISE_DISTANCE = 155;
   const MAX_X = STAGE_WIDTH - DEFENDER_WIDTH;
 
   let score = 0;
