@@ -18,6 +18,16 @@
 
 const VIDEOS = [
    {
+      title: "Ep. 2: The Mighty Ruthie — Ruthie Bolton",
+      url: "https://youtu.be/XCwV9wQgkCo",
+      description: "Two-time Olympic gold medalist, WNBA star, Army officer and Hall of Famer Ruthie Bolton sits down with her old Sydney 2000 teammate Kara to talk about life after the final buzzer.",
+   },
+   {
+      title: "Ep. 1: Kelly Schumacher",
+      url: "https://youtu.be/hwiQcZPPDNE",
+      description: "The premiere episode: Kara sits down with Kelly Schumacher.",
+   },
+   {
           title: "Coming soon",
     url: "https://youtu.be/TAFv2dpKN88?si=mM7fDKKlY62c0fZK",          
       description: "",
